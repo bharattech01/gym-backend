@@ -53,7 +53,9 @@ def get_home_dashboard(
         "membership": {
             "gym_name": membership.gym_name if membership else None,
             "valid_till": membership.valid_till if membership else None,
-            "days_left": membership.days_left if membership else None
+            "days_left": membership.days_left if membership else None,
+            "qr_code": membership.qr_code if membership else None
+
         },
 
         "stats": {

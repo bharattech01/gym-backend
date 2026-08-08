@@ -10,8 +10,22 @@ from app.models.membership import Membership
 from app.models.user_stats import UserStats
 from app.models.workout import Workout
 
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
 
+from app.core.database import Base, engine
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("Connecting to database...")
+    Base.metadata.create_all(bind=engine)
+    yield
+    print("Application shutting down...")
+
+
+app = FastAPI(lifespan=lifespan)
 app = FastAPI()
 
 app.include_router(

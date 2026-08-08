@@ -13,29 +13,39 @@ from app.models.otp import OTP              # ✅ FIX 2
 
 router = APIRouter()
 
+from fastapi import HTTPException
+import traceback
+
 @router.post("/send-otp")
 def send_otp(data: SendOTPRequest, db: Session = Depends(get_db)):
-    mobile = data.mobile
+    try:
+        mobile = data.mobile
 
-    otp = str(random.randint(100000, 999999))
+        otp = str(random.randint(100000, 999999))
 
-    otp_entry = OTP(
-        mobile=mobile,
-        otp=otp,
-        expires_at=datetime.utcnow() + timedelta(minutes=5),
-        is_used=False
-    )
+        otp_entry = OTP(
+            mobile=mobile,
+            otp=otp,
+            expires_at=datetime.utcnow() + timedelta(minutes=5),
+            is_used=False
+        )
 
-    db.add(otp_entry)
-    db.commit()
+        db.add(otp_entry)
+        db.commit()
+        db.refresh(otp_entry)
 
-    print("OTP:", otp)
+        print("OTP:", otp)
 
-    return {
-        "message": "OTP sent successfully",
-        "expires_in": 300
-    }
+        return {
+            "message": "OTP sent successfully",
+            "otp": otp,
+            "expires_in": 300
+        }
 
+    except Exception as e:
+        db.rollback()
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/verify-otp")
 def verify_otp(
