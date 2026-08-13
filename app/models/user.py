@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean
 from app.core.database import Base
+from sqlalchemy.orm import relationship
 
 class User(Base):
     __tablename__ = "users"
@@ -23,3 +24,4 @@ class User(Base):
     fitness_level = Column(String, nullable=True)
 
     profile_photo = Column(String, nullable=True)
+    chats = relationship("Chat",backref="user",cascade="all, delete")

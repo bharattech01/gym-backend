@@ -13,6 +13,7 @@ from app.api.v1.endpoints import challenges
 from app.api.v1.endpoints import challenge_participants
 from app.api.v1.endpoints import products
 from app.api.v1.endpoints import cart
+from app.api.v1.endpoints import ai_chat
 
 api_router = APIRouter()
 
@@ -30,4 +31,5 @@ api_router.include_router(challenges.router,prefix="/challenges",tags=["Challeng
 api_router.include_router(challenge_participants.router,prefix="/challenge-participants",tags=["Challenge Participants"])
 api_router.include_router(products.router,prefix="/products",tags=["Products"])
 api_router.include_router(cart.router,prefix="/cart",tags=["Cart"])
+api_router.include_router(ai_chat.router,prefix="/ai-chat",tags=["AI Chat"])
 
