@@ -11,7 +11,6 @@ class VerifyOTPRequest(BaseModel):
 class ProfileSetupRequest(BaseModel):
 
     name: str
-
     fitness_goal: str
-
     fitness_level: str
+    gender: str

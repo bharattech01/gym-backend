@@ -14,6 +14,8 @@ from app.api.v1.endpoints import challenge_participants
 from app.api.v1.endpoints import products
 from app.api.v1.endpoints import cart
 from app.api.v1.endpoints import ai_chat
+from app.api.v1.endpoints import partner_auth, demo
+from app.api.v1.endpoints import community
 
 api_router = APIRouter()
 
@@ -32,4 +34,7 @@ api_router.include_router(challenge_participants.router,prefix="/challenge-parti
 api_router.include_router(products.router,prefix="/products",tags=["Products"])
 api_router.include_router(cart.router,prefix="/cart",tags=["Cart"])
 api_router.include_router(ai_chat.router,prefix="/ai-chat",tags=["AI Chat"])
+api_router.include_router(partner_auth.router,prefix="/partner/auth",tags=["Partner Auth"],)
+api_router.include_router(demo.router,prefix="/demo",tags=["Demo Booking"],)
+api_router.include_router(community.router,prefix="/community",tags=["Community"],)
 

@@ -8,3 +8,4 @@ pydantic
 groq
 pwdlib[argon2]
 python-multipart
+qrcode[pil]

@@ -23,8 +23,12 @@ from app.models.gym_member import GymMember
 from app.models.product import Product
 from app.models.chat import Chat
 from app.models.chat_message import ChatMessage
-from app.models.partner import Partner
-from app.models.demo_booking import DemoBooking
+from app.models.community_post import CommunityPost
+from app.models.community_like import CommunityLike
+from app.models.community_comment import CommunityComment
+from app.models.community_message import CommunityMessage
+# from app.models.partner import Partner
+# from app.models.demo_booking import DemoBooking
 
 
 @asynccontextmanager

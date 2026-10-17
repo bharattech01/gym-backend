@@ -39,7 +39,8 @@ def create_gym(
         cleanliness_score=gym.cleanliness_score,
         transformation_score=gym.transformation_score,
         day_pass_price=gym.day_pass_price,
-        description=gym.description
+        description=gym.description,
+        current_occupancy=gym.current_occupancy
     )
 
     db.add(new_gym)
