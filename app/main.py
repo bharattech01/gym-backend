@@ -27,6 +27,7 @@ from app.models.community_post import CommunityPost
 from app.models.community_like import CommunityLike
 from app.models.community_comment import CommunityComment
 from app.models.community_message import CommunityMessage
+from app.models.gym_visit import GymVisit
 # from app.models.partner import Partner
 # from app.models.demo_booking import DemoBooking
 

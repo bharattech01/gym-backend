@@ -1,6 +1,7 @@
 
 from sqlalchemy import Column, Integer, String, Float
 
+
 from app.core.database import Base
 
 
@@ -36,3 +37,6 @@ class Gym(Base):
     transformation_score = Column(Float)
     day_pass_price = Column(Integer)
     description = Column(String)
+
+    latitude = Column(Float, nullable=True)
+    longitude = Column(Float, nullable=True)
